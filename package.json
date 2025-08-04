@@ -23,10 +23,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build": "tsup",
     "dev": "npm run build -- --watch",
     "test": "vitest",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint src",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -52,6 +52,10 @@
     "@types/node": "^24.2.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-destructure-depth": "^1.0.3",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.3",
     "pino-pretty": "^13.1.1",
     "prettier": "^3.6.2",
     "tsup": "^8.5.0",

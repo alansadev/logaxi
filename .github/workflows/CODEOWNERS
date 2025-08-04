@@ -1,0 +1,5 @@
+# Rule to protect CI workflows
+
+# Any changes to files within this folder will require approval from the @alansadev
+
+/.github/workflows/ @alansadev
