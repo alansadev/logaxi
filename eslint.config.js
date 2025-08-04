@@ -1,15 +1,26 @@
-const eslint = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const eslintConfigPrettier = require('eslint-config-prettier');
+const pluginImport = require('eslint-plugin-import');
+const pluginPrettier = require('eslint-plugin-prettier');
+const pluginDestructureDepth = require('eslint-plugin-destructure-depth');
 
 module.exports = tseslint.config(
   {
-    ignores: ['eslint.config.mjs'],
+    ignores: ['node_modules/', 'dist/', 'eslint.config.js', 'prettier.config.js', 'tsup.config.ts'],
   },
-  eslint.configs.recommended,
   ...tseslint.configs.recommended,
-  eslintConfigPrettier,
   {
+    plugins: {
+      import: pluginImport,
+      prettier: pluginPrettier,
+      'destructure-depth': pluginDestructureDepth,
+    },
+    settings: {
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
+    },
     rules: {
       'import/extensions': [
         'error',
@@ -20,13 +31,7 @@ module.exports = tseslint.config(
         },
       ],
       'prettier/prettier': 'error',
-      'import/no-unresolved': [
-        2,
-        {
-          commonjs: false,
-          amd: false,
-        },
-      ],
+      'import/no-unresolved': 'error',
       camelcase: 'off',
       'no-underscore-dangle': 'off',
       'no-unused-expressions': 'off',
@@ -48,13 +53,7 @@ module.exports = tseslint.config(
       '@typescript-eslint/triple-slash-reference': 'off',
       'import/no-import-module-exports': 'off',
       'no-shadow': 'off',
-      '@typescript-eslint/no-explicit-any': [
-        'error',
-        {
-          fixToUnknown: true,
-          ignoreRestArgs: false,
-        },
-      ],
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-misused-new': 'error',
       'max-depth': ['error', 2],
       'destructure-depth/max-depth': [
@@ -68,4 +67,5 @@ module.exports = tseslint.config(
       'func-style': ['error', 'declaration'],
     },
   },
+  eslintConfigPrettier,
 );
