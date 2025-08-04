@@ -7,7 +7,5 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  treeshake: true,
-  shims: true,
-  minify: false,
+  external: ['class-validator', 'class-transformer'],
 });
