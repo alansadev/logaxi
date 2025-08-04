@@ -23,10 +23,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build": "tsup",
     "dev": "npm run build -- --watch",
     "test": "vitest",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint src",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
